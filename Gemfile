@@ -48,7 +48,11 @@ group :development do
   gem 'pry-rails'
   gem 'slim-rails'
   gem 'html2slim'
+  gem 'sorcery'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
+
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -60,3 +64,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'font-awesome-sass'
