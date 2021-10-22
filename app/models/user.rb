@@ -16,6 +16,8 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  has_many :posts, dependent: :destroy
+
 
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
