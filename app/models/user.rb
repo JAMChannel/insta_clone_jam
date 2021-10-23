@@ -18,7 +18,6 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :posts, dependent: :destroy
 
-
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
 
@@ -29,10 +28,8 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   # passwordというDBに存在しない仮想的な属性(virtual attributes)が追加される。これがないと保存できない
 
-
   # 自身のものかを判別するためのメソッドを作成
   def own?(object)
     id == object.user_id
   end
-
 end

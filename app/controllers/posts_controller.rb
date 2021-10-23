@@ -40,7 +40,6 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました'
   end
 
-
   def show
     @post = Post.find(params[:id])
   end
@@ -48,6 +47,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:body, images: [])  # カラム名
   end
-
-
 end

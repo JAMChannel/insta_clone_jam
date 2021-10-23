@@ -58,6 +58,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'carrierwave'
+  gem 'jquery-rails'
+  gem 'popper_js'
 end
 
 group :test do
