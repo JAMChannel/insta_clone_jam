@@ -28,4 +28,11 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   # passwordというDBに存在しない仮想的な属性(virtual attributes)が追加される。これがないと保存できない
+
+
+  # 自身のものかを判別するためのメソッドを作成
+  def own?(object)
+    id == object.user_id
+  end
+
 end
