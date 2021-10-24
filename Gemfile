@@ -60,6 +60,7 @@ group :development do
   gem 'carrierwave'
   gem 'jquery-rails'
   gem 'popper_js'
+  gem 'kaminari'
 end
 
 group :test do
