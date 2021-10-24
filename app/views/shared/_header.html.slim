@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white
     ul.navbar-nav.mt-2.mt-lg-0
       / Font Awesomeのアイコンを使用している。
       li.nav-item
-        a.nav-link href="#"
+        = link_to new_post_path, class: 'nav-link' do
           = icon 'far', 'image', class: 'fa-lg'
       li.nav-item
         a.nav-link href="#"
