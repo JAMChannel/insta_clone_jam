@@ -27,20 +27,15 @@
           = simple_format(@post.body)
       hr
       / コメント一覧
-      .row.no-gutters
-        .col-2
-          = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle'
-        .col-10
-          | ダミーコメントダミーコメントダミーコメント
-      hr
-      .row.no-gutters
-        .col-2
-          = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle'
-        .col-10
-          | ダミーコメントダミーコメントダミーコメント
+      = render 'comments/comments', comments: @comments
+      / .comments-box
+      /   = render comments
+      /   - @comments.each do |comment|
+      /    = render partial: 'comment', locals: {comment: comment}
+      / (comment)にインスタンス変数(@comment)を渡して、テンプレート(comments/_comment.heml.slim)をレンダリング
     hr.m-0
     .post-comment.p-3
-      form.form-inline.mb-0
-        input type="text" class="form-control input-comment-body" placeholder="コメント"
-        button type="submit" class="btn btn-primary btn-raised"
-          | 投稿
+      = render 'comments/form', post: @post, comment: @comment
+      / = form_with model: [post, comment], class: 'd-flex mb-0 flex-nowrap justify-content-between', remote: true do |f|
+      /   = f.text_field :body, class: 'form-control input-comment-body', placeholder: 'コメント'
+      /   = f.submit '投稿', class: 'btn btn-primary btn-raised'

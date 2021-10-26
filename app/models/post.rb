@@ -19,6 +19,8 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
+  
   mount_uploaders :images, PostImageUploader
   serialize :images, JSON
   # 配列やハッシュ等好きなデータ型のデータを放り込むことができる機能.
