@@ -10,6 +10,10 @@
             = icon 'far', 'trash-alt', class: 'fa-lg'
           = link_to edit_post_path(post) do
             = icon 'far', 'edit', class: 'fa-lg'
+      / ログインしている且つ自分の投稿でない場合
+      - if current_user && !current_user.own?(post)
+        .ml-auto
+          = render 'like_area', post: post
   = link_to post_path(post) do
     .swiper
       .swiper-wrapper

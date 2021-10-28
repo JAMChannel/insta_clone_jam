@@ -29,8 +29,26 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   # passwordというDBに存在しない仮想的な属性(virtual attributes)が追加される。これがないと保存できない
 
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+  # ユーザーが「いいね!」したポスト一覧を取得
+  # user.like_postsで投稿一覧を取得可能
+
   # 自身のものかを判別するためのメソッドを作成
   def own?(object)
     id == object.user_id
+  end
+
+  def like(post)
+    # binding.pry
+    like_posts << post
+  end
+
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  def like?(post)
+    like_posts.include?(post)
   end
 end
