@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
     @comment.destroy!
   end
 
-
   private
 
   def comment_params
@@ -31,5 +30,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
     # すでにpost_idは存在している
   end
-
 end
