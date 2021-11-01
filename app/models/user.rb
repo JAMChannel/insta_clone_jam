@@ -34,6 +34,14 @@ class User < ApplicationRecord
   # ユーザーが「いいね!」したポスト一覧を取得
   # user.like_postsで投稿一覧を取得可能
 
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower
+
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+
   # 自身のものかを判別するためのメソッドを作成
   def own?(object)
     id == object.user_id
@@ -50,5 +58,24 @@ class User < ApplicationRecord
 
   def like?(post)
     like_posts.include?(post)
+  end
+
+  # ユーザーをフォローする
+  def follow(other_user)
+    following << other_user
+  end
+
+  # ユーザーをフォロー解除する
+  def unfollow(other_user)
+    following.destroy(other_user)
+  end
+
+  # 現在のユーザーがフォローしてたらtrueを返す
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+  def feed
+    Post.where(user_id: following_ids << id)
   end
 end
