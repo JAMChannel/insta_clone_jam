@@ -51,6 +51,12 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end
 
+  def search
+    @posts = @search_form.search.includes(:user).page(params[:page])
+  end
+
+  private
+
   def post_params
     params.require(:post).permit(:body, images: [])  # カラム名
   end

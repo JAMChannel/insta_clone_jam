@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/edit'
   root 'posts#index'
 
   resources :users, only: %i[index new create show]
@@ -7,6 +6,9 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   resources :posts, shallow: true do
+    collection do
+      get :search
+    end
     resources :comments
   end
   resources :likes, only: %i[create destroy]
