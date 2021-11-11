@@ -18,5 +18,4 @@ class ApplicationController < ActionController::Base
     # binding.pry
     params.fetch(:q, {}).permit(:body, :comment_body, :username)
   end
-
 end

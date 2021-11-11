@@ -29,5 +29,4 @@ class Relationship < ApplicationRecord
   def create_activities
     Activity.create(subject: self, user: followed, action_type: :followed_me)
   end
-  
 end

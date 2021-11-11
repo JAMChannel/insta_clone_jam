@@ -24,5 +24,4 @@ Rails.application.routes.draw do
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
   end
-  
 end
