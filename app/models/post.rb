@@ -22,6 +22,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
+  has_one :activity, as: :subject, dependent: :destroy
 
   mount_uploaders :images, PostImageUploader
   serialize :images, JSON

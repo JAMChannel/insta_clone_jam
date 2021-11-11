@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :mypage do
+    get 'activities/index'
+  end
   root 'posts#index'
 
   resources :users, only: %i[index new create show]
