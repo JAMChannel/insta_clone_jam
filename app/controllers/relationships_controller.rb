@@ -3,7 +3,8 @@ class RelationshipsController < ApplicationController
 
   def create
     @user = User.find(params[:followed_id])
-    current_user.follow(@user)
+    # current_user.follow(@user)
+    UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later if current_user.follow(@user)
   end
 
   def destroy
