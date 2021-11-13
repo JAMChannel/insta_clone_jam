@@ -19,7 +19,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   mount_uploader :avatar, AvatarUploader
-  
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+  has_many :activities, dependent: :destroy
 
   # 自身のものかを判別するためのメソッドを作成
   def own?(object)
