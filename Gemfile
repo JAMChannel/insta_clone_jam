@@ -61,6 +61,7 @@ group :development do
   gem 'jquery-rails'
   gem 'popper_js'
   gem 'kaminari'
+  gem 'letter_opener_web'
 end
 
 group :test do
