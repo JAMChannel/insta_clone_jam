@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
+  
   namespace :mypage do
     get 'activities/index'
   end
