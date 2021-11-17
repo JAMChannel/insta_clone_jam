@@ -7,6 +7,9 @@ class SorceryCore < ActiveRecord::Migration[5.2]
       t.string :username, null: false
       t.string :avatar
       t.timestamps                null: false
+      t.boolean "notification_on_comment", default: true
+      t.boolean "notification_on_like", default: true
+      t.boolean "notification_on_follow", default: true
     end
 
     add_index :users, :email, unique: true
