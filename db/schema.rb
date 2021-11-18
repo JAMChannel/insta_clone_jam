@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 2021_11_10_043448) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "notification_on_comment", default: true
+    t.boolean "notification_on_like", default: true
+    t.boolean "notification_on_follow", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
