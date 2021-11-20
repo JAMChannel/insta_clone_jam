@@ -39,6 +39,8 @@ group :development, :test do
   gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -48,20 +50,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'slim-rails'
-  gem 'html2slim'
-  gem 'sorcery'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
-  gem 'rails-i18n'
-  gem 'annotate'
+  gem 'letter_opener_web'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'carrierwave'
-  gem 'jquery-rails'
-  gem 'popper_js'
-  gem 'kaminari'
-  gem 'letter_opener_web'
 end
 
 group :test do
@@ -79,3 +72,12 @@ gem 'config'
 gem 'sidekiq'
 gem 'sinatra'
 gem 'meta-tags'
+gem 'rails-i18n'
+gem 'annotate'
+gem 'carrierwave'
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'kaminari'
+gem 'slim-rails'
+gem 'html2slim'
+gem 'sorcery'
