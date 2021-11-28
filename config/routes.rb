@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
     mount Sidekiq::Web, at: '/sidekiq'
   end
+
+  resources :chatrooms, only: %i[index create show], shallow: true do
+    resources :messages
+  end
   
   namespace :mypage do
     get 'activities/index'
