@@ -7,6 +7,8 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatroom = current_user.chatrooms.includes(:users).find(params[:id])
+    # binding.pry
   end
 
   def create
