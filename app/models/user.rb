@@ -26,6 +26,10 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatrooms, through: :chatroom_users
+  has_many :messages, dependent: :destroy
+
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
 
